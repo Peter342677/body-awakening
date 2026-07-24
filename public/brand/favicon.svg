@@ -1,0 +1,19 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Body Awakening icon">
+  <defs>
+    <linearGradient id="fav-bg" x1="70" y1="450" x2="440" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C56B7C"/>
+      <stop offset="0.55" stop-color="#A96C99"/>
+      <stop offset="1" stop-color="#7E63A6"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="116" fill="url(#fav-bg)"/>
+  <g fill="#FBF3F6">
+    <!-- side petals (raised arms) -->
+    <path d="M256 356 C 200 330, 168 274, 168 208 C 220 226, 250 284, 256 356 Z" opacity="0.9"/>
+    <path d="M256 356 C 312 330, 344 274, 344 208 C 292 226, 262 284, 256 356 Z" opacity="0.9"/>
+    <!-- central body -->
+    <path d="M256 372 C 228 314, 228 250, 256 192 C 284 250, 284 314, 256 372 Z"/>
+    <!-- head -->
+    <circle cx="256" cy="150" r="26"/>
+  </g>
+</svg>

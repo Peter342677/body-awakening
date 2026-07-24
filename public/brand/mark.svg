@@ -1,0 +1,34 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Body Awakening emblem">
+  <defs>
+    <linearGradient id="ba-grad" x1="40" y1="210" x2="200" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C56B7C"/>
+      <stop offset="0.55" stop-color="#A96C99"/>
+      <stop offset="1" stop-color="#8168AE"/>
+    </linearGradient>
+    <linearGradient id="ba-grad-soft" x1="40" y1="210" x2="200" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C56B7C" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#8168AE" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- radiating awakening rays -->
+  <g stroke="url(#ba-grad-soft)" stroke-width="2.4" stroke-linecap="round">
+    <line x1="120" y1="20" x2="120" y2="44"/>
+    <line x1="79"  y1="30" x2="90"  y2="51"/>
+    <line x1="161" y1="30" x2="150" y2="51"/>
+    <line x1="49"  y1="59" x2="67"  y2="73"/>
+    <line x1="191" y1="59" x2="173" y2="73"/>
+  </g>
+
+  <!-- meditative body / lotus: raised-arm side petals -->
+  <path d="M120 150 C 92 138, 74 108, 74 74 C 100 84, 116 112, 120 150 Z" fill="url(#ba-grad)" opacity="0.92"/>
+  <path d="M120 150 C 148 138, 166 108, 166 74 C 140 84, 124 112, 120 150 Z" fill="url(#ba-grad)" opacity="0.92"/>
+  <!-- central body petal -->
+  <path d="M120 158 C 106 128, 106 96, 120 66 C 134 96, 134 128, 120 158 Z" fill="url(#ba-grad)"/>
+  <!-- head / awakening point -->
+  <circle cx="120" cy="52" r="11" fill="url(#ba-grad)"/>
+
+  <!-- horizon / awakening arc (the ground it rises from) -->
+  <path d="M64 176 C 88 190, 152 190, 176 176" stroke="url(#ba-grad)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M84 192 C 100 200, 140 200, 156 192" stroke="url(#ba-grad-soft)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+</svg>

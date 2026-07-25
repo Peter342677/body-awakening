@@ -35,6 +35,31 @@ async function getBusyRanges(timeMin: string, timeMax: string) {
   return res.data.calendars?.[calId]?.busy ?? [];
 }
 
+const HONOLULU_WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+// Hawaii-Aleutian Standard Time does not observe DST, so this offset is fixed year-round.
+const HONOLULU_UTC_OFFSET_HOURS = 10;
+
+/** Reads a date's calendar day, weekday, and display label as seen in Honolulu, regardless of server timezone. */
+function honoluluDateParts(date: Date) {
+  const isoDate = date.toLocaleDateString("en-CA", { timeZone: TIMEZONE });
+  const weekdayShort = date.toLocaleDateString("en-US", {
+    timeZone: TIMEZONE,
+    weekday: "short",
+  });
+  const label = date.toLocaleDateString("en-US", {
+    timeZone: TIMEZONE,
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  });
+  return { isoDate, weekdayIndex: HONOLULU_WEEKDAYS.indexOf(weekdayShort), label };
+}
+
+function honoluluWallClockToUTC(isoDate: string, hh: number, mm: number): Date {
+  const [y, m, d] = isoDate.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d, hh + HONOLULU_UTC_OFFSET_HOURS, mm));
+}
+
 export async function getAvailableDays(): Promise<DaySlots[]> {
   const days: DaySlots[] = [];
   const now = new Date();
@@ -48,20 +73,14 @@ export async function getAvailableDays(): Promise<DaySlots[]> {
     : [];
 
   for (let i = 1; i <= availability.daysAhead; i++) {
-    const date = new Date(now);
-    date.setDate(date.getDate() + i);
-    if (availability.unavailableWeekdays.includes(date.getDay())) continue;
-
-    const isoDate = date.toISOString().slice(0, 10);
-    const label = date.toLocaleDateString("en-US", {
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-    });
+    const date = new Date(now.getTime() + i * 24 * 60 * 60 * 1000);
+    const { isoDate, weekdayIndex, label } = honoluluDateParts(date);
+    if (availability.unavailableWeekdays.includes(weekdayIndex)) continue;
 
     const slots = availability.slotsPerDay.filter((time) => {
       if (!busy.length) return true;
-      const slotDate = new Date(`${isoDate} ${time}`);
+      const { hh, mm } = to24Hour(time);
+      const slotDate = honoluluWallClockToUTC(isoDate, hh, mm);
       return !busy.some((b) => {
         if (!b.start || !b.end) return false;
         return slotDate >= new Date(b.start) && slotDate < new Date(b.end);
@@ -129,7 +148,9 @@ export async function createCalendarEvent({
   const calendar = await getCalendarClient();
   const res = await calendar.events.insert({
     calendarId: process.env.GOOGLE_CALENDAR_ID as string,
-    sendUpdates: "all",
+    // A bare service account (no Google Workspace domain-wide delegation) cannot invite
+    // attendees or send updates on a personal Gmail calendar — inserting a plain event
+    // still works, and client details are captured in the description below instead.
     requestBody: {
       summary: `${serviceName} with ${clientName}`,
       description: [
@@ -142,7 +163,6 @@ export async function createCalendarEvent({
         .join("\n"),
       start: { dateTime: startDateTime, timeZone: TIMEZONE },
       end: { dateTime: endDateTime, timeZone: TIMEZONE },
-      attendees: clientEmail ? [{ email: clientEmail, displayName: clientName }] : undefined,
     },
   });
 

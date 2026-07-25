@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  /* Core brand */
-  --rose: #c56b7c;
-  --rose-deep: #b05566;
-  --plum: #7e63a6;
-  --plum-deep: #6a4f92;
-  --mauve: #a96c99;
-  --lilac: #c9b4d8;
+  /* Core brand: purple primary, soft orange & gold secondary */
+  --rose: #d3a06a;
+  --rose-deep: #b98047;
+  --plum: #8672a6;
+  --plum-deep: #6a5788;
+  --mauve: #9a84ab;
+  --lilac: #cabcdb;
 
   /* Neutrals */
-  --cream: #fbf6f4;
-  --sand: #f3e9ea;
-  --ink: #3a2a3f;
-  --ink-soft: #6e5a74;
-  --line: #e7d8dc;
+  --cream: #fbf7f3;
+  --sand: #f0ebe6;
+  --ink: #392f42;
+  --ink-soft: #6c6274;
+  --line: #e3dbe0;
 
   /* Dark sections */
-  --night: #2a1e33;
-  --night-2: #3b2a44;
-  --cream-on-night: #f5edef;
+  --night: #2a2433;
+  --night-2: #3b3444;
+  --cream-on-night: #f5f0ec;
 
   /* Signature gradient */
-  --grad-brand: linear-gradient(105deg, #b85667 0%, #9a5f92 52%, #7458a6 100%);
-  --grad-soft: linear-gradient(135deg, #f7e7e9 0%, #efe4f1 100%);
-  --grad-scrim: linear-gradient(180deg, rgba(42, 30, 51, 0) 0%, rgba(42, 30, 51, 0.55) 100%);
+  --grad-brand: linear-gradient(105deg, #b98047 0%, #9a84ab 52%, #6a5788 100%);
+  --grad-soft: linear-gradient(135deg, #f6ecdd 0%, #ece4f1 100%);
+  --grad-scrim: linear-gradient(180deg, rgba(42, 36, 51, 0) 0%, rgba(42, 36, 51, 0.55) 100%);
 
   /* Motion */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Cursor */
-  --cursor-fill: #f5edef;
+  --cursor-fill: #f5f0ec;
 
   /* Fonts */
   --font-display: var(--font-cormorant), "Cormorant Garamond", serif;
@@ -188,10 +188,10 @@ a {
   z-index: 2;
   background: radial-gradient(
     circle,
-    rgba(232, 150, 168, 0.85) 0%,
-    rgba(178, 130, 214, 0.65) 40%,
-    rgba(126, 99, 166, 0.3) 62%,
-    rgba(126, 99, 166, 0) 78%
+    rgba(211, 160, 106, 0.8) 0%,
+    rgba(154, 132, 171, 0.6) 40%,
+    rgba(106, 87, 136, 0.28) 62%,
+    rgba(106, 87, 136, 0) 78%
   );
   filter: blur(38px);
   mix-blend-mode: screen;

@@ -78,7 +78,10 @@ export default function CoachingPage() {
           <Reveal>
             <p className="text-lg leading-[1.75] text-[color:var(--ink-soft)] max-w-[62ch]">
               1:1 sessions, in person or remote; single sessions or ongoing
-              containers. ⟨PACKAGES_AND_PRICES⟩
+              containers. Your first session starts with a free 30 minute
+              conversation, just $30 to continue on and complete the full 60
+              minutes. After that, sessions are $70 each, or save with a
+              package of 4 for $260 or 8 for $480.
             </p>
           </Reveal>
         </div>

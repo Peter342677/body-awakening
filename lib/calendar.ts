@@ -10,11 +10,27 @@ export const calendarEnabled = Boolean(
 
 const TIMEZONE = "Pacific/Honolulu";
 
+// Hosting env-var UIs frequently mangle a raw multi-line PEM key (escaped \n
+// sequences get dropped or double-escaped in transit), so accept a base64-encoded
+// key as well and decode it — base64 has no characters for that process to corrupt.
+function normalizePrivateKey(raw?: string): string | undefined {
+  if (!raw) return raw;
+  const unescaped = raw.replace(/\\n/g, "\n");
+  if (unescaped.includes("BEGIN PRIVATE KEY")) return unescaped;
+  try {
+    const decoded = Buffer.from(raw, "base64").toString("utf-8");
+    if (decoded.includes("BEGIN PRIVATE KEY")) return decoded;
+  } catch {
+    // fall through to returning the unescaped raw value below
+  }
+  return unescaped;
+}
+
 async function getCalendarClient() {
   const { google } = await import("googleapis");
   const auth = new google.auth.JWT({
     email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    key: normalizePrivateKey(process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY),
     // Read availability and write confirmed bookings from the same service account.
     scopes: ["https://www.googleapis.com/auth/calendar"],
   });

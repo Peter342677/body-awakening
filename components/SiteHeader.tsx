@@ -117,6 +117,13 @@ export default function SiteHeader() {
                             {child.label}
                           </Link>
                         ))}
+                        <Link
+                          href="/book"
+                          className="mt-1 block px-4 py-3 rounded-2xl text-sm font-medium text-cream text-center"
+                          style={{ backgroundImage: "var(--grad-brand)" }}
+                        >
+                          Book a Session
+                        </Link>
                       </div>
                     </div>
                   )}

@@ -8,9 +8,3 @@ export function getStripe(): Stripe {
   }
   return new Stripe(process.env.STRIPE_SECRET_KEY);
 }
-
-export function parsePriceToCents(price: string): number | null {
-  const match = price.match(/(\d+(\.\d{1,2})?)/);
-  if (!match) return null;
-  return Math.round(parseFloat(match[1]) * 100);
-}

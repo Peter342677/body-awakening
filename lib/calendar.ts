@@ -112,13 +112,6 @@ function addMinutes(hh: number, mm: number, duration: number) {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** Reads the largest number out of a duration string like "60 / 90 min", capped to the slot spacing. */
-export function parseDurationMinutes(duration: string): number {
-  const nums = [...duration.matchAll(/\d+/g)].map((m) => parseInt(m[0], 10));
-  if (!nums.length) return 60;
-  return Math.min(Math.max(...nums), 90);
-}
-
 export async function createCalendarEvent({
   serviceName,
   durationMinutes,

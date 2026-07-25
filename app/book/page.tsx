@@ -22,9 +22,9 @@ const TRUST = [
 export default async function BookPage({
   searchParams,
 }: {
-  searchParams: Promise<{ confirmed?: string }>;
+  searchParams: Promise<{ confirmed?: string; service?: string }>;
 }) {
-  const { confirmed } = await searchParams;
+  const { confirmed, service } = await searchParams;
 
   return (
     <>
@@ -56,7 +56,7 @@ export default async function BookPage({
             </div>
           </Reveal>
           <Reveal>
-            <BookingWidget confirmedId={confirmed} />
+            <BookingWidget confirmedId={confirmed} initialServiceSlug={service} />
           </Reveal>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">

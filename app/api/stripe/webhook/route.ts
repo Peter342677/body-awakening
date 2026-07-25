@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { getStripe, stripeEnabled } from "@/lib/stripe";
-import { createCalendarEvent, parseDurationMinutes } from "@/lib/calendar";
+import { createCalendarEvent } from "@/lib/calendar";
 import { SERVICES } from "@/lib/services";
 
 export async function POST(req: Request) {
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
       try {
         await createCalendarEvent({
           serviceName: service.name,
-          durationMinutes: parseDurationMinutes(service.duration),
+          durationMinutes: Number(meta.durationMinutes) || 60,
           date: meta.date,
           time: meta.time,
           clientName: meta.name || "Client",

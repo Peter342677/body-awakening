@@ -1,5 +1,6 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import type { Service } from "@/lib/services";
+import { formatDuration, formatPrice, type Service } from "@/lib/services";
 
 export default function PricingStub({ items }: { items: Service[] }) {
   return (
@@ -17,6 +18,7 @@ export default function PricingStub({ items }: { items: Service[] }) {
               <th className="py-4 px-6 text-sm uppercase tracking-wide text-[color:var(--ink-soft)]">
                 Price
               </th>
+              <th className="py-4 px-6" />
             </tr>
           </thead>
           <tbody>
@@ -24,10 +26,19 @@ export default function PricingStub({ items }: { items: Service[] }) {
               <tr key={s.slug} className="border-t border-[color:var(--line)]">
                 <td className="py-4 px-6 text-ink">{s.name}</td>
                 <td className="py-4 px-6 text-[color:var(--ink-soft)]">
-                  {s.duration}
+                  {formatDuration(s)}
                 </td>
                 <td className="py-4 px-6 text-[color:var(--ink-soft)]">
-                  {s.price}
+                  {formatPrice(s)}
+                </td>
+                <td className="py-4 px-6 text-right">
+                  <Link
+                    href={`/book?service=${s.slug}`}
+                    className="inline-block rounded-full px-5 py-2 text-xs uppercase tracking-wide text-cream whitespace-nowrap"
+                    style={{ backgroundImage: "var(--grad-brand)" }}
+                  >
+                    Book a Session
+                  </Link>
                 </td>
               </tr>
             ))}

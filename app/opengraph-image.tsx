@@ -16,7 +16,7 @@ export default function OpengraphImage() {
           alignItems: "flex-start",
           padding: "80px",
           backgroundImage:
-            "linear-gradient(105deg, #B98047 0%, #9A84AB 52%, #6A5788 100%)",
+            "linear-gradient(105deg, #BF7040 0%, #CDA45C 45%, #63498A 100%)",
         }}
       >
         <div

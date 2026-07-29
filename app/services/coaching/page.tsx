@@ -12,7 +12,7 @@ import { getServicesByHub } from "@/lib/services";
 import { serviceJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Coaching: Spiritual, Wellness, Life & Performance",
+  title: "Spiritual, Wellness & Life Coaching",
   description:
     "Somatic-rooted coaching with Jason Gentrup: spiritual, wellness, life, and performance coaching for people ready to navigate themselves.",
   path: "/services/coaching",

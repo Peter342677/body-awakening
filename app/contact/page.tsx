@@ -15,8 +15,12 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const DETAILS = [
-  { icon: Mail, label: SITE_EMAIL },
-  { icon: Phone, label: SITE_PHONE },
+  { icon: Mail, label: SITE_EMAIL, href: `mailto:${SITE_EMAIL}` },
+  {
+    icon: Phone,
+    label: SITE_PHONE,
+    href: `tel:${SITE_PHONE.replace(/[^+\d]/g, "")}`,
+  },
   { icon: MapPin, label: SITE_LOCATION },
   { icon: Clock, label: "⟨HOURS⟩" },
 ];
@@ -48,10 +52,16 @@ export default function ContactPage() {
               </div>
               <Eyebrow className="mb-6">DETAILS</Eyebrow>
               <ul className="space-y-4">
-                {DETAILS.map(({ icon: Icon, label }) => (
+                {DETAILS.map(({ icon: Icon, label, href }) => (
                   <li key={label} className="flex items-center gap-3 text-[color:var(--ink-soft)]">
                     <Icon className="h-5 w-5 text-[color:var(--mauve)] shrink-0" />
-                    {label}
+                    {href ? (
+                      <a href={href} className="link-underline">
+                        {label}
+                      </a>
+                    ) : (
+                      label
+                    )}
                   </li>
                 ))}
               </ul>

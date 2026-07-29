@@ -7,11 +7,13 @@ export default function ServiceCard({
   description,
   href,
   image,
+  imageAlt = "",
 }: {
   title: string;
   description: string;
   href: string;
   image?: string;
+  imageAlt?: string;
 }) {
   return (
     <Link
@@ -21,7 +23,7 @@ export default function ServiceCard({
       {image && (
         <Image
           src={image}
-          alt=""
+          alt={imageAlt}
           fill
           sizes="(min-width: 768px) 45vw, 90vw"
           className="object-cover opacity-25 scale-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-60 group-hover:scale-110"

@@ -73,7 +73,10 @@ export default function SiteFooter() {
           <p className="eyebrow mb-4">Stay in touch</p>
           <Newsletter onDark />
           <p className="mt-6 text-sm text-[color:var(--lilac)]">
-            {SITE_EMAIL} · {SITE_PHONE}<br />
+            <a href={`mailto:${SITE_EMAIL}`} className="link-underline">{SITE_EMAIL}</a>
+            {" · "}
+            <a href={`tel:${SITE_PHONE.replace(/[^+\d]/g, "")}`} className="link-underline">{SITE_PHONE}</a>
+            <br />
             {SITE_LOCATION}
           </p>
         </div>

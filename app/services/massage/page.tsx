@@ -12,7 +12,7 @@ import { getServicesByHub } from "@/lib/services";
 import { serviceJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Massage Therapy: Reiki, Craniosacral, Lymphatic & Distant Healing",
+  title: "Reiki, Craniosacral & Lymphatic Massage",
   description:
     "Nervous-system-first bodywork with Jason Gentrup: Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing.",
   path: "/services/massage",

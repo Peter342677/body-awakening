@@ -34,6 +34,7 @@ export default function ServicesPage() {
               description="Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing."
               href="/services/massage"
               image="/photos/reiki-hands.jpg"
+              imageAlt="Hands offering Reiki energy work"
             />
           </Reveal>
           <Reveal delay={100}>
@@ -42,6 +43,7 @@ export default function ServicesPage() {
               description="Spiritual, wellness, life, and performance coaching rooted in somatic awareness."
               href="/services/coaching"
               image="/photos/misty-road.jpg"
+              imageAlt="A misty road stretching ahead, symbolizing the coaching journey"
             />
           </Reveal>
         </div>

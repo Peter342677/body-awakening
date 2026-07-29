@@ -9,7 +9,7 @@ import CtaBand from "@/components/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Jason Gentrup: Veteran, Bodyworker & Guide",
+  title: "About Jason Gentrup: Veteran & Bodyworker",
   description:
     "Marine Corps veteran, bodyworker, and world traveler. The story behind Body Awakening and the philosophy that shapes every session.",
   path: "/about",

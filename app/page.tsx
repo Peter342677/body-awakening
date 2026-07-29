@@ -13,7 +13,7 @@ import CtaBand from "@/components/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Body Awakening: Massage Therapy & Somatic Coaching with Jason Gentrup",
+  title: "Massage Therapy & Somatic Coaching in Honolulu",
   description:
     "Bodywork and coaching for people ready to come home to themselves. Reiki, craniosacral, lymphatic and somatic work with veteran and bodyworker Jason Gentrup.",
   path: "/",
@@ -98,7 +98,7 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10">
           <Image
             src="/photos/spa-still-life.jpg"
-            alt=""
+            alt="A calm massage therapy setting with soft, natural light"
             fill
             sizes="100vw"
             className="object-cover scale-110 opacity-40 blur-md"
@@ -146,6 +146,7 @@ export default function HomePage() {
                 description="Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing: bodywork that speaks to the nervous system, not just the muscle."
                 href="/services/massage"
                 image="/photos/reiki-hands.jpg"
+                imageAlt="Hands offering Reiki energy work"
               />
             </Reveal>
             <Reveal delay={100}>
@@ -154,6 +155,7 @@ export default function HomePage() {
                 description="Spiritual, wellness, life, and performance coaching rooted in somatic awareness, for the parts of the journey that touch alone can't reach."
                 href="/services/coaching"
                 image="/photos/misty-road.jpg"
+                imageAlt="A misty road stretching ahead, symbolizing the coaching journey"
               />
             </Reveal>
           </div>

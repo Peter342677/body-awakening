@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import Eyebrow from "@/components/Eyebrow";
+import TrackedLink from "@/components/TrackedLink";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { buildMetadata, SITE_EMAIL, SITE_PHONE, SITE_LOCATION } from "@/lib/seo";
 
@@ -15,11 +16,12 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const DETAILS = [
-  { icon: Mail, label: SITE_EMAIL, href: `mailto:${SITE_EMAIL}` },
+  { icon: Mail, label: SITE_EMAIL, href: `mailto:${SITE_EMAIL}`, event: "email_click" },
   {
     icon: Phone,
     label: SITE_PHONE,
     href: `tel:${SITE_PHONE.replace(/[^+\d]/g, "")}`,
+    event: "phone_click",
   },
   { icon: MapPin, label: SITE_LOCATION },
   { icon: Clock, label: "⟨HOURS⟩" },
@@ -52,13 +54,13 @@ export default function ContactPage() {
               </div>
               <Eyebrow className="mb-6">DETAILS</Eyebrow>
               <ul className="space-y-4">
-                {DETAILS.map(({ icon: Icon, label, href }) => (
+                {DETAILS.map(({ icon: Icon, label, href, event }) => (
                   <li key={label} className="flex items-center gap-3 text-[color:var(--ink-soft)]">
                     <Icon className="h-5 w-5 text-[color:var(--mauve)] shrink-0" />
                     {href ? (
-                      <a href={href} className="link-underline">
+                      <TrackedLink href={href} event={event!} className="link-underline">
                         {label}
-                      </a>
+                      </TrackedLink>
                     ) : (
                       label
                     )}

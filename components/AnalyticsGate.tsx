@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const CONSENT_KEY = "ba-consent";
 
 export default function AnalyticsGate() {
   const [consent, setConsent] = useState<"granted" | "denied" | null>(null);
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   useEffect(() => {
     // Reads a client-only source (localStorage) once after mount, so the
@@ -24,11 +24,11 @@ export default function AnalyticsGate() {
     setConsent(value);
   };
 
-  if (!gaId) return null;
+  if (!gtmId) return null;
 
   return (
     <>
-      {consent === "granted" && <GoogleAnalytics gaId={gaId} />}
+      {consent === "granted" && <GoogleTagManager gtmId={gtmId} />}
       {consent === null && (
         <div className="fixed bottom-0 left-0 right-0 z-[9995] night-section">
           <div className="container-brand py-5 flex flex-col sm:flex-row items-center justify-between gap-4">

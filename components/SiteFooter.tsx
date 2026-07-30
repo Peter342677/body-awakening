@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Newsletter from "@/components/Newsletter";
+import TrackedLink from "@/components/TrackedLink";
 import { getServicesByHub } from "@/lib/services";
 import { SITE_EMAIL, SITE_PHONE, SITE_LOCATION } from "@/lib/seo";
 
@@ -73,9 +74,17 @@ export default function SiteFooter() {
           <p className="eyebrow mb-4">Stay in touch</p>
           <Newsletter onDark />
           <p className="mt-6 text-sm text-[color:var(--lilac)]">
-            <a href={`mailto:${SITE_EMAIL}`} className="link-underline">{SITE_EMAIL}</a>
+            <TrackedLink href={`mailto:${SITE_EMAIL}`} event="email_click" className="link-underline">
+              {SITE_EMAIL}
+            </TrackedLink>
             {" · "}
-            <a href={`tel:${SITE_PHONE.replace(/[^+\d]/g, "")}`} className="link-underline">{SITE_PHONE}</a>
+            <TrackedLink
+              href={`tel:${SITE_PHONE.replace(/[^+\d]/g, "")}`}
+              event="phone_click"
+              className="link-underline"
+            >
+              {SITE_PHONE}
+            </TrackedLink>
             <br />
             {SITE_LOCATION}
           </p>

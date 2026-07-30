@@ -1,5 +1,6 @@
 import { SITE_URL, SITE_NAME, SITE_PHONE, SITE_EMAIL, SITE_LOCATION } from "@/lib/seo";
 import type { Service } from "@/lib/services";
+import type { JournalPost } from "@/content/journal";
 
 export const personJsonLd = () => ({
   "@context": "https://schema.org",
@@ -42,6 +43,29 @@ export const bookJsonLd = () => ({
   name: "The Human Compass",
   author: { "@type": "Person", name: "Jason Gentrup" },
   url: `${SITE_URL}/the-human-compass`,
+});
+
+export const blogPostingJsonLd = (post: JournalPost) => ({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image ?? "/photos/jason/jason-reading.jpg"}`,
+  author: { "@type": "Person", name: "Jason Gentrup" },
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/brand/logo-horizontal.png`,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/journal/${post.slug}`,
+  },
 });
 
 export const breadcrumbJsonLd = (items: { name: string; path: string }[]) => ({

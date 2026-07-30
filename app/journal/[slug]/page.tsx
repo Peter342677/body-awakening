@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
+import { blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { JOURNAL_POSTS, getJournalPost } from "@/content/journal";
 
 export function generateStaticParams() {
@@ -36,6 +38,14 @@ export default async function JournalPostPage({
 
   return (
     <>
+      <JsonLd data={blogPostingJsonLd(post)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Journal", path: "/journal" },
+          { name: post.title, path: `/journal/${post.slug}` },
+        ])}
+      />
       <PageHero
         eyebrow={new Date(post.date).toLocaleDateString("en-US", {
           month: "long",

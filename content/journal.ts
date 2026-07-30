@@ -4,6 +4,7 @@ export type JournalPost = {
   excerpt: string;
   date: string;
   body: string[];
+  image?: string;
 };
 
 export const JOURNAL_POSTS: JournalPost[] = [
@@ -23,7 +24,7 @@ export const JOURNAL_POSTS: JournalPost[] = [
     slug: "what-craniosacral-work-actually-does",
     title: "What craniosacral work actually does",
     excerpt:
-      "A light-touch modality that follows the subtlest rhythm in the body, and why that subtlety is the point.",
+      "A light-touch modality that follows the subtlest rhythm in the body: the flow of fluid around the brain and spine, and why that subtlety is the point.",
     date: "2026-05-14",
     body: [
       "Craniosacral therapy is easy to misunderstand because so little seems to happen from the outside.",

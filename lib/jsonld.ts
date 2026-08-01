@@ -6,7 +6,7 @@ export const personJsonLd = () => ({
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Jason Gentrup",
-  jobTitle: "Massage Therapist & Somatic Coach",
+  jobTitle: "Massage Therapist & Life & Spiritual Coach",
   url: `${SITE_URL}/about`,
   worksFor: { "@type": "Organization", name: SITE_NAME },
   alumniOf: [

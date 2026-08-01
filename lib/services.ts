@@ -59,14 +59,6 @@ export const SERVICES: Service[] = [
       "Exploring meaning, connection, and your relationship to something larger through direct experience and honest inquiry.",
   },
   {
-    slug: "wellness-coaching",
-    name: "Wellness Coaching",
-    hub: "coaching",
-    durations: [{ minutes: 60, label: "60 min", price: 70 }],
-    description:
-      "A whole-person approach to feeling well: sleep, stress, movement, nourishment, and nervous-system regulation.",
-  },
-  {
     slug: "life-coaching",
     name: "Life Coaching",
     hub: "coaching",
@@ -75,12 +67,20 @@ export const SERVICES: Service[] = [
       "For the crossroads moments: clarifying what matters, naming what's in the way, and charting a path you can actually walk.",
   },
   {
-    slug: "performance-somatic-coaching",
-    name: "Performance & Somatic Coaching",
+    slug: "wellness-coaching",
+    name: "Wellness Coaching",
     hub: "coaching",
     durations: [{ minutes: 60, label: "60 min", price: 70 }],
     description:
-      "Rooted in somatic awareness, training the ability to stay grounded under pressure and perform from a regulated, connected state.",
+      "A whole-person approach to feeling well: sleep, stress, movement, nourishment, and nervous-system regulation.",
+  },
+  {
+    slug: "performance-coaching",
+    name: "Performance Coaching",
+    hub: "coaching",
+    durations: [{ minutes: 60, label: "60 min", price: 70 }],
+    description:
+      "Training the ability to stay grounded under pressure and perform from a regulated, connected state rather than sheer force.",
   },
 ];
 

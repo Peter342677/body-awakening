@@ -53,7 +53,7 @@ export default function OpengraphImage() {
             color: "#F0EBE6",
           }}
         >
-          Massage Therapy &amp; Somatic Coaching with Jason Gentrup
+          Massage Therapy &amp; Life &amp; Spiritual Coaching with Jason Gentrup
         </div>
       </div>
     ),

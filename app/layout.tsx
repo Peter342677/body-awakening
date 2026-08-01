@@ -30,11 +30,11 @@ const jost = Jost({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME}: Massage Therapy & Somatic Coaching with Jason Gentrup`,
+    default: `${SITE_NAME}: Massage Therapy & Life & Spiritual Coaching with Jason Gentrup`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Bodywork and coaching for people ready to come home to themselves. Reiki, craniosacral, lymphatic and somatic work with veteran and bodyworker Jason Gentrup.",
+    "Bodywork and coaching for people ready to come home to themselves. Reiki, craniosacral, lymphatic bodywork, and life and spiritual coaching with Jason Gentrup.",
   ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
     ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
     : {}),

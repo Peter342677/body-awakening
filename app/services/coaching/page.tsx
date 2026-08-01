@@ -12,9 +12,9 @@ import { getServicesByHub } from "@/lib/services";
 import { serviceJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Spiritual, Wellness & Life Coaching",
+  title: "Life & Spiritual Coaching",
   description:
-    "Somatic-rooted coaching with Jason Gentrup: spiritual, wellness, life, and performance coaching for people ready to navigate themselves.",
+    "Life and spiritual coaching with Jason Gentrup, plus wellness and performance work, for people ready to navigate themselves.",
   path: "/services/coaching",
 });
 
@@ -24,16 +24,16 @@ const MODALITIES = [
     body: "For those sensing there is more to their life than the surface of it. Together we explore meaning, connection, and your relationship to something larger, not through dogma, but through direct experience and honest inquiry.",
   },
   {
-    title: "Wellness Coaching",
-    body: "A whole-person approach to feeling well: sleep, stress, movement, nourishment, and nervous-system regulation. We build habits that fit your real life and help your body find steadiness again.",
-  },
-  {
     title: "Life Coaching",
     body: "For the crossroads moments: transitions, decisions, and the sense of being off-course. We work to clarify what matters, name what's in the way, and chart a path you can actually walk.",
   },
   {
-    title: "Performance & Somatic Coaching",
-    body: "For those who want to show up fully: in their work, their craft, their body. Rooted in somatic awareness, we train the ability to stay grounded under pressure and perform from a regulated, connected state rather than sheer force.",
+    title: "Wellness Coaching",
+    body: "A whole-person approach to feeling well: sleep, stress, movement, nourishment, and nervous-system regulation. We build habits that fit your real life and help your body find steadiness again.",
+  },
+  {
+    title: "Performance Coaching",
+    body: "For those who want to show up fully: in their work, their craft, their life. We train the ability to stay grounded under pressure and perform from a regulated, connected state rather than sheer force.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function CoachingPage() {
       <PageHero
         eyebrow="COACHING"
         heading="For the parts of the journey that touch alone can't reach."
-        sub="Jason's coaching comes from lived experience: rebuilding a life from rock bottom, and studying the human condition on six continents and across a thousand conversations. It is grounded in the body (somatic coaching) and honest about how change actually happens. Come as you are; leave with a clearer sense of your own direction."
+        sub="Jason's coaching comes from lived experience: rebuilding a life from rock bottom, and studying the human condition on six continents and across a thousand conversations. It is grounded in real experience and honest about how change actually happens. Come as you are; leave with a clearer sense of your own direction."
       />
 
       <ServiceVideoBand

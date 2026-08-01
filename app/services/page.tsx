@@ -40,7 +40,7 @@ export default function ServicesPage() {
           <Reveal delay={100}>
             <ServiceCard
               title="Coaching"
-              description="Spiritual, wellness, life, and performance coaching rooted in somatic awareness."
+              description="Spiritual and life coaching, plus wellness and performance work."
               href="/services/coaching"
               image="/photos/misty-road.jpg"
               imageAlt="A misty road stretching ahead, symbolizing the coaching journey"

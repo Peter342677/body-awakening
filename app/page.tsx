@@ -13,9 +13,9 @@ import CtaBand from "@/components/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Massage Therapy & Somatic Coaching in Honolulu",
+  title: "Massage Therapy & Life & Spiritual Coaching in Honolulu",
   description:
-    "Bodywork and coaching for people ready to come home to themselves. Reiki, craniosacral, lymphatic and somatic work with veteran and bodyworker Jason Gentrup.",
+    "Bodywork and coaching for people ready to come home to themselves. Reiki, craniosacral, lymphatic bodywork, and life and spiritual coaching with Jason Gentrup.",
   path: "/",
 });
 
@@ -78,7 +78,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "Somatic coaching gave me a way to stay grounded under pressure that actually holds up in real life, not just on the mat.",
+      "Working with Jason helped me get honest about what I actually wanted, not just what I thought I was supposed to want. That clarity changed everything.",
     attribution: "Kekoa L., Hawaii",
   },
 ];
@@ -87,7 +87,7 @@ export default function HomePage() {
   return (
     <>
       <VideoHero
-        eyebrow="MASSAGE THERAPY · SOMATIC COACHING"
+        eyebrow="MASSAGE THERAPY · LIFE & SPIRITUAL COACHING"
         heading="Come home to the body that has been carrying you."
         highlight="home"
         sub="Body Awakening is the bodywork and coaching practice of Jason Gentrup, a place to release what you've been holding, reconnect with yourself, and learn to navigate your life from the inside out."
@@ -152,7 +152,7 @@ export default function HomePage() {
             <Reveal delay={100}>
               <ServiceCard
                 title="Coaching"
-                description="Spiritual, wellness, life, and performance coaching rooted in somatic awareness, for the parts of the journey that touch alone can't reach."
+                description="Spiritual and life coaching, plus wellness and performance work, for the parts of the journey that touch alone can't reach."
                 href="/services/coaching"
                 image="/photos/misty-road.jpg"
                 imageAlt="A misty road stretching ahead, symbolizing the coaching journey"

@@ -24,7 +24,7 @@ const DETAILS = [
     event: "phone_click",
   },
   { icon: MapPin, label: SITE_LOCATION },
-  { icon: Clock, label: "⟨HOURS⟩" },
+  { icon: Clock, label: "Monday to Friday, 9:00 AM to 5:00 PM (Hawai'i time)" },
 ];
 
 export default function ContactPage() {
@@ -67,8 +67,15 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 aspect-video rounded-[20px] bg-[color:var(--sand)] border border-[color:var(--line)] flex items-center justify-center text-sm text-[color:var(--ink-soft)]">
-                Map embed: {SITE_LOCATION}
+              <div className="mt-8 aspect-video rounded-[20px] overflow-hidden border border-[color:var(--line)]">
+                <iframe
+                  title={`Map of ${SITE_LOCATION}`}
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-157.95%2C21.25%2C-157.75%2C21.37&layer=mapnik&marker=21.3069%2C-157.8583"
+                  className="h-full w-full"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
               <p className="mt-8 text-sm text-[color:var(--ink-soft)]">
                 Prefer to book directly? <a href="/book" className="link-underline text-ink">Head to booking</a>.

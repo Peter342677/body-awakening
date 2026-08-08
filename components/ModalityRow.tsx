@@ -1,14 +1,17 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 export default function ModalityRow({
   index,
   title,
   body,
+  href,
   reverse = false,
 }: {
   index: number;
   title: string;
   body: string;
+  href?: string;
   reverse?: boolean;
 }) {
   return (
@@ -26,6 +29,15 @@ export default function ModalityRow({
           <p className="text-lg leading-[1.75] text-[color:var(--ink-soft)] max-w-[62ch]">
             {body}
           </p>
+          {href && (
+            <Link
+              href={href}
+              className="mt-5 inline-block rounded-full px-5 py-2 text-xs uppercase tracking-wide text-cream whitespace-nowrap"
+              style={{ backgroundImage: "var(--grad-brand)" }}
+            >
+              Book a Session
+            </Link>
+          )}
         </div>
       </div>
     </Reveal>

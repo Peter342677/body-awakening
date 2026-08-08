@@ -21,18 +21,22 @@ export const metadata: Metadata = buildMetadata({
 const MODALITIES = [
   {
     title: "Spiritual Coaching",
+    slug: "spiritual-coaching",
     body: "For those sensing there is more to their life than the surface of it. Together we explore meaning, connection, and your relationship to something larger, not through dogma, but through direct experience and honest inquiry.",
   },
   {
     title: "Life Coaching",
+    slug: "life-coaching",
     body: "For the crossroads moments: transitions, decisions, and the sense of being off-course. We work to clarify what matters, name what's in the way, and chart a path you can actually walk.",
   },
   {
     title: "Wellness Coaching",
+    slug: "wellness-coaching",
     body: "A whole-person approach to feeling well: sleep, stress, movement, nourishment, and nervous-system regulation. We build habits that fit your real life and help your body find steadiness again.",
   },
   {
     title: "Performance Coaching",
+    slug: "performance-coaching",
     body: "For those who want to show up fully: in their work, their craft, their life. We train the ability to stay grounded under pressure and perform from a regulated, connected state rather than sheer force.",
   },
 ];
@@ -67,7 +71,13 @@ export default function CoachingPage() {
       <section className="section-pad">
         <div className="container-brand space-y-10">
           {MODALITIES.map((m, i) => (
-            <ModalityRow key={m.title} index={i + 1} title={m.title} body={m.body} />
+            <ModalityRow
+              key={m.title}
+              index={i + 1}
+              title={m.title}
+              body={m.body}
+              href={`/book?service=${m.slug}`}
+            />
           ))}
         </div>
       </section>

@@ -21,18 +21,22 @@ export const metadata: Metadata = buildMetadata({
 const MODALITIES = [
   {
     title: "Reiki & Energy Work",
+    slug: "reiki-energy-work",
     body: "A gentle, hands-on (or hands-near) practice that works with the body's energy to calm the nervous system, ease stress, and restore a sense of flow. Deeply relaxing and often profoundly quieting for a mind that won't stop, a way to let the body downshift into its own capacity to heal.",
   },
   {
     title: "Craniosacral Therapy",
+    slug: "craniosacral-therapy",
     body: "A light-touch approach that follows the subtle rhythm of the craniosacral system: the fluid and membranes surrounding the brain and spinal cord. By releasing deep restrictions around the head, spine, and nervous system, craniosacral work can ease tension, headaches, and the residue of stress and trauma held in the body.",
   },
   {
     title: "Lymphatic Drainage",
+    slug: "lymphatic-drainage",
     body: "A precise, feather-light technique that encourages the movement of lymph, the body's natural detox and immune network. It reduces swelling and fluid retention, supports recovery, and leaves the body feeling lighter, clearer, and less inflamed.",
   },
   {
     title: "Distant Healing",
+    slug: "distant-healing",
     body: "Energy work is not bound by the room. For clients who can't be present in person, Jason offers distant healing sessions: a focused, intentional practice held remotely to support relaxation, balance, and wellbeing wherever you are.",
   },
 ];
@@ -69,7 +73,13 @@ export default function MassagePage() {
       <section className="section-pad">
         <div className="container-brand space-y-10">
           {MODALITIES.map((m, i) => (
-            <ModalityRow key={m.title} index={i + 1} title={m.title} body={m.body} />
+            <ModalityRow
+              key={m.title}
+              index={i + 1}
+              title={m.title}
+              body={m.body}
+              href={`/book?service=${m.slug}`}
+            />
           ))}
         </div>
       </section>

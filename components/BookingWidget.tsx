@@ -54,6 +54,13 @@ export default function BookingWidget({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(Boolean(confirmedId));
+  const [paymentType, setPaymentType] = useState<"full" | "deposit">("full");
+  const [depositInput, setDepositInput] = useState("");
+  const [confirmedPayment, setConfirmedPayment] = useState<{
+    paymentType: "full" | "deposit";
+    chargeAmount: number | null;
+    fullPrice: number | null;
+  } | null>(null);
 
   const {
     register,
@@ -63,6 +70,22 @@ export default function BookingWidget({
 
   useEffect(() => {
     if (confirmedId) track("booking_complete", { via: "stripe_redirect" });
+  }, [confirmedId]);
+
+  useEffect(() => {
+    if (!confirmedId) return;
+    fetch(`/api/checkout/confirm?session_id=${confirmedId}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.found) {
+          setConfirmedPayment({
+            paymentType: data.paymentType,
+            chargeAmount: data.chargeAmount,
+            fullPrice: data.fullPrice,
+          });
+        }
+      })
+      .catch(() => {});
   }, [confirmedId]);
 
   useEffect(() => {
@@ -79,6 +102,17 @@ export default function BookingWidget({
   );
 
   const idx = stepMap(service);
+  const minDeposit = duration ? Math.ceil(duration.price * 0.2) : 0;
+  const depositAmount = Number(depositInput);
+  const depositValid =
+    paymentType === "full" ||
+    (depositInput !== "" &&
+      Number.isFinite(depositAmount) &&
+      depositAmount >= minDeposit &&
+      duration !== null &&
+      depositAmount <= duration.price);
+  const chargeAmount =
+    paymentType === "deposit" && depositValid ? depositAmount : duration?.price ?? 0;
 
   if (confirmed) {
     return (
@@ -94,6 +128,15 @@ export default function BookingWidget({
           A confirmation is on its way to your inbox with everything you need
           before we meet. Reference: <span className="text-ink">{confirmedId}</span>
         </p>
+        {confirmedPayment?.paymentType === "deposit" &&
+          confirmedPayment.chargeAmount !== null &&
+          confirmedPayment.fullPrice !== null && (
+            <p className="mt-4 text-sm text-ink">
+              ${confirmedPayment.chargeAmount} deposit paid. $
+              {Math.round((confirmedPayment.fullPrice - confirmedPayment.chargeAmount) * 100) / 100}{" "}
+              balance due at your session.
+            </p>
+          )}
         <p className="mt-6 text-sm text-[color:var(--ink-soft)]">
           Need to reschedule? ⟨POLICY⟩ Just reply to your confirmation email
           or <a href="/contact" className="link-underline">reach out</a>.
@@ -104,6 +147,10 @@ export default function BookingWidget({
 
   const onSubmitDetails = async (values: DetailsForm) => {
     if (!service || !duration || !date || !time) return;
+    if (paymentType === "deposit" && !depositValid) {
+      setError(`Enter a deposit between $${minDeposit} and $${duration.price}.`);
+      return;
+    }
     setSubmitting(true);
     setError(null);
     track("checkout_start", { service: service.slug });
@@ -116,6 +163,8 @@ export default function BookingWidget({
           durationMinutes: duration.minutes,
           date,
           time,
+          paymentType,
+          ...(paymentType === "deposit" ? { depositAmount } : {}),
           ...values,
         }),
       });
@@ -123,6 +172,11 @@ export default function BookingWidget({
       if (!res.ok) throw new Error(data.error ?? "Something went wrong");
       if (data.mock) {
         track("booking_complete", { service: service.slug });
+        setConfirmedPayment({
+          paymentType,
+          chargeAmount,
+          fullPrice: duration.price,
+        });
         setConfirmed(true);
         window.history.replaceState(null, "", `/book?confirmed=${data.bookingId}`);
       } else if (data.redirectUrl) {
@@ -356,6 +410,69 @@ export default function BookingWidget({
                 {duration?.label} · ${duration?.price}
               </p>
             </div>
+
+            <div className="mt-6">
+              <p className="text-sm mb-3 text-[color:var(--ink-soft)]">How would you like to pay?</p>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setPaymentType("full")}
+                  className={clsx(
+                    "flex-1 rounded-[14px] border p-4 text-left transition-colors",
+                    paymentType === "full"
+                      ? "border-[color:var(--mauve)]"
+                      : "border-[color:var(--line)] hover:border-[color:var(--mauve)]"
+                  )}
+                >
+                  <p className="text-ink">Pay in full</p>
+                  <p className="mt-1 text-sm text-[color:var(--ink-soft)]">${duration?.price}</p>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPaymentType("deposit")}
+                  className={clsx(
+                    "flex-1 rounded-[14px] border p-4 text-left transition-colors",
+                    paymentType === "deposit"
+                      ? "border-[color:var(--mauve)]"
+                      : "border-[color:var(--line)] hover:border-[color:var(--mauve)]"
+                  )}
+                >
+                  <p className="text-ink">Pay a deposit</p>
+                  <p className="mt-1 text-sm text-[color:var(--ink-soft)]">
+                    From ${minDeposit}, balance due at your session
+                  </p>
+                </button>
+              </div>
+
+              {paymentType === "deposit" && (
+                <div className="mt-4">
+                  <label className="block text-sm mb-2 text-[color:var(--ink-soft)]">
+                    Deposit amount
+                  </label>
+                  <div className="relative max-w-[200px]">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[color:var(--ink-soft)]">
+                      $
+                    </span>
+                    <input
+                      type="number"
+                      min={minDeposit}
+                      max={duration?.price}
+                      step="1"
+                      value={depositInput}
+                      onChange={(e) => setDepositInput(e.target.value)}
+                      placeholder={String(minDeposit)}
+                      className="w-full rounded-xl border border-[color:var(--line)] pl-8 pr-4 py-3 outline-none focus:border-[color:var(--mauve)]"
+                    />
+                  </div>
+                  <p className="mt-2 text-sm text-[color:var(--ink-soft)]">
+                    Minimum ${minDeposit} (20%).
+                    {depositValid &&
+                      ` $${Math.round(((duration?.price ?? 0) - depositAmount) * 100) / 100} balance due at your session.`}
+                  </p>
+                </div>
+              )}
+            </div>
+
             {error && <p className="mt-4 text-sm text-[color:var(--rose-deep)]">{error}</p>}
             <div className="mt-6 flex items-center justify-between">
               <button
@@ -367,15 +484,16 @@ export default function BookingWidget({
               </button>
               <button
                 type="button"
-                disabled={submitting}
+                disabled={submitting || (paymentType === "deposit" && !depositValid)}
                 onClick={() => handleSubmit(onSubmitDetails)()}
                 className={clsx(
                   "rounded-full px-8 py-3 text-sm uppercase tracking-wide text-cream",
-                  submitting && "opacity-70 pointer-events-none"
+                  (submitting || (paymentType === "deposit" && !depositValid)) &&
+                    "opacity-50 pointer-events-none"
                 )}
                 style={{ backgroundImage: "var(--grad-brand)" }}
               >
-                {submitting ? "Processing…" : "Confirm & Pay"}
+                {submitting ? "Processing…" : `Confirm & Pay $${chargeAmount}`}
               </button>
             </div>
           </div>

@@ -40,6 +40,7 @@ export async function POST(req: Request) {
           clientEmail: session.customer_email ?? "",
           clientPhone: meta.phone,
           notes: meta.notes,
+          paymentNote: meta.paymentNote,
         });
       } catch (err) {
         console.error("Failed to create calendar event for paid booking:", err);

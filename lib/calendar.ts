@@ -137,6 +137,7 @@ export async function createCalendarEvent({
   clientEmail,
   clientPhone,
   notes,
+  paymentNote,
 }: {
   serviceName: string;
   durationMinutes: number;
@@ -146,6 +147,7 @@ export async function createCalendarEvent({
   clientEmail: string;
   clientPhone?: string;
   notes?: string;
+  paymentNote?: string;
 }) {
   if (!calendarEnabled) return null;
 
@@ -166,6 +168,7 @@ export async function createCalendarEvent({
         `Client: ${clientName}`,
         `Email: ${clientEmail}`,
         clientPhone && `Phone: ${clientPhone}`,
+        paymentNote && `Payment: ${paymentNote}`,
         notes && `Notes: ${notes}`,
       ]
         .filter(Boolean)

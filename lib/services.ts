@@ -14,7 +14,7 @@ export const SERVICES: Service[] = [
     name: "Reiki & Energy Work",
     hub: "massage",
     durations: [
-      { minutes: 60, label: "60 min", price: 125 },
+      { minutes: 60, label: "60 min", price: 70 },
       { minutes: 90, label: "90 min", price: 165 },
     ],
     description:
@@ -46,7 +46,7 @@ export const SERVICES: Service[] = [
     slug: "distant-healing",
     name: "Distant Healing",
     hub: "massage",
-    durations: [{ minutes: 60, label: "60 min", price: 125 }],
+    durations: [{ minutes: 60, label: "60 min", price: 70 }],
     description:
       "A focused, intentional energy-work practice held remotely to support relaxation, balance, and wellbeing wherever you are.",
   },

@@ -31,10 +31,20 @@ export default function SiteFooter() {
             Bodywork and coaching for people ready to come home to themselves.
           </p>
           <div className="flex gap-4 mt-6 text-[color:var(--lilac)]">
-            <a href="⟨INSTAGRAM_URL⟩" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/bodyawakening_massage/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
               <SocialIcon d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm5 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm4.6-1.6h.01" />
             </a>
-            <a href="⟨FACEBOOK_URL⟩" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/profile.php?id=61583250361940"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
               <SocialIcon d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h2.6l.4-4H13V8a1 1 0 0 1 1-1h2V4Z" />
             </a>
             <a href="⟨YOUTUBE_URL⟩" aria-label="YouTube">

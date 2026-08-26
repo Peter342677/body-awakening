@@ -25,6 +25,10 @@ export const localBusinessJsonLd = () => ({
   email: SITE_EMAIL,
   areaServed: SITE_LOCATION,
   priceRange: "$$",
+  sameAs: [
+    "https://www.instagram.com/bodyawakening_massage/",
+    "https://www.facebook.com/profile.php?id=61583250361940",
+  ],
 });
 
 export const serviceJsonLd = (service: Service) => ({

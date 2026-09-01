@@ -27,6 +27,13 @@ const jost = Jost({
   display: "swap",
 });
 
+// Static pages default to a 1-year CDN cache with no revalidation. That let a
+// stale HTML snapshot referencing an already-rotated (deleted) CSS filename
+// get stuck at the CDN edge, breaking the page's layout for visitors hitting
+// that edge. Capping it at an hour means any bad cache entry self-heals
+// quickly instead of persisting for up to a year.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {

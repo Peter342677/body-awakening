@@ -119,6 +119,21 @@ export default function AboutPage() {
               </p>
             </Reveal>
           ))}
+          <Reveal>
+            <p className="text-lg leading-[1.75] text-[color:var(--ink-soft)]">
+              Jason is also a certified facilitator for{" "}
+              <a
+                href="https://9dbreathwork.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-ink"
+              >
+                9D Breathwork
+              </a>
+              , a guided breathwork practice he offers alongside his massage
+              and coaching work.
+            </p>
+          </Reveal>
         </div>
       </section>
 

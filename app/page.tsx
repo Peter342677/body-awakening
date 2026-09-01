@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import VideoHero from "@/components/VideoHero";
 import Reveal from "@/components/Reveal";
 import Eyebrow from "@/components/Eyebrow";
@@ -238,6 +239,53 @@ export default function HomePage() {
       </section>
 
       <CredentialsStrip eyebrow="TRAINED & CREDENTIALED" />
+
+      {/* 9D BREATHWORK */}
+      <section className="section-pad">
+        <div className="container-brand">
+          <Reveal>
+            <div
+              className="rounded-[24px] border border-[color:var(--line)] bg-[color:var(--cream)] p-10 md:p-14 grid gap-10 md:grid-cols-[auto_1fr] items-center"
+              style={{ boxShadow: "0 20px 60px -30px rgba(42,30,51,0.25)" }}
+            >
+              <div
+                className="relative h-32 w-32 md:h-40 md:w-40 mx-auto rounded-[20px] p-4"
+                style={{ backgroundColor: "var(--night)" }}
+              >
+                <Image
+                  src="/brand/9d-breathwork-logo.webp"
+                  alt="9D Breathwork"
+                  fill
+                  sizes="160px"
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <Eyebrow className="mb-3">ALSO OFFERED</Eyebrow>
+                <h2 className="text-2xl md:text-3xl mb-4">
+                  Jason is a certified 9D Breathwork Facilitator.
+                </h2>
+                <p className="text-lg leading-relaxed text-[color:var(--ink-soft)] max-w-[58ch] mb-6">
+                  A guided breathwork practice held alongside his massage and
+                  coaching work, for those ready to go even deeper.
+                </p>
+                <a
+                  href="https://9dbreathwork.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 font-body text-sm tracking-wide uppercase link-underline text-ink"
+                >
+                  Visit 9D Breathwork
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* IMPACT STATS */}
       <section className="section-pad">

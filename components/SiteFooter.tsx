@@ -103,10 +103,21 @@ export default function SiteFooter() {
 
       <div className="container-brand mt-16 pt-8 border-t border-[color:var(--night-2)] flex flex-col md:flex-row justify-between gap-3 text-xs text-[color:var(--lilac)]">
         <p>© {new Date().getFullYear()} Body Awakening. Veteran-owned.</p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
           <Link href="/privacy" className="link-underline">Privacy</Link>
           <Link href="/terms" className="link-underline">Terms</Link>
           <Link href="/accessibility" className="link-underline">Accessibility</Link>
+          <span>
+            Powered by{" "}
+            <a
+              href="https://www.vantageauthorshouse.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline text-[color:var(--cream-on-night)]"
+            >
+              Vantage Author&rsquo;s House
+            </a>
+          </span>
         </div>
       </div>
     </footer>

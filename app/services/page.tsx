@@ -31,7 +31,7 @@ export default function ServicesPage() {
           <Reveal>
             <ServiceCard
               title="Massage Therapy"
-              description="Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing."
+              description="The Body Reset (Reiki and massage combined), Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing."
               href="/services/massage"
               image="/photos/reiki-hands.jpg"
               imageAlt="Hands offering Reiki energy work"

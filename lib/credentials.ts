@@ -1,6 +1,6 @@
 export const CREDENTIALS = [
-  "Licensed Massage Therapist ⟨LIC#⟩",
-  "Reiki ⟨level/certification⟩",
+  "Licensed Massage Therapist, License # MAT-17591",
+  "Reiki Master",
   "Craniosacral Therapy",
   "Lymphatic Drainage",
   "Life & Spiritual Coaching",

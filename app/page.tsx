@@ -144,7 +144,7 @@ export default function HomePage() {
             <Reveal>
               <ServiceCard
                 title="Massage Therapy"
-                description="Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing: bodywork that speaks to the nervous system, not just the muscle."
+                description="The Body Reset (Reiki and massage combined), Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing: bodywork that speaks to the nervous system, not just the muscle."
                 href="/services/massage"
                 image="/photos/reiki-hands.jpg"
                 imageAlt="Hands offering Reiki energy work"

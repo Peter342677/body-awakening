@@ -14,11 +14,16 @@ import { serviceJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 export const metadata: Metadata = buildMetadata({
   title: "Reiki, Craniosacral & Lymphatic Massage",
   description:
-    "Nervous-system-first bodywork with Jason Gentrup: Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing.",
+    "Nervous-system-first bodywork with Jason Gentrup: the Body Reset (Reiki and massage combined), Reiki and energy work, craniosacral therapy, lymphatic drainage, and distant healing.",
   path: "/services/massage",
 });
 
 const MODALITIES = [
+  {
+    title: "Body Reset",
+    slug: "body-reset",
+    body: "Energy and massage, combined in a single session. Jason blends hands-on bodywork with Reiki so the muscle and the nervous system are worked together: tension is released from the tissue while the energy work helps the body stay quiet enough to let it go. The most complete way to come in stressed and leave reset.",
+  },
   {
     title: "Reiki & Energy Work",
     slug: "reiki-energy-work",

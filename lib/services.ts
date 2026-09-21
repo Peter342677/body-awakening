@@ -10,6 +10,17 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
+    slug: "body-reset",
+    name: "Body Reset",
+    hub: "massage",
+    durations: [
+      { minutes: 60, label: "60 min", price: 125 },
+      { minutes: 90, label: "90 min", price: 165 },
+    ],
+    description:
+      "Reiki and massage woven into one session: hands-on bodywork to release the muscle, energy work to settle the nervous system beneath it.",
+  },
+  {
     slug: "reiki-energy-work",
     name: "Reiki & Energy Work",
     hub: "massage",

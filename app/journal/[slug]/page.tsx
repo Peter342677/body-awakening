@@ -56,13 +56,21 @@ export default async function JournalPostPage({
       />
       <section className="section-pad">
         <div className="container-brand max-w-2xl space-y-6">
-          {post.body.map((para, i) => (
-            <Reveal key={i}>
-              <p className="text-lg leading-[1.75] text-[color:var(--ink-soft)]">
-                {para}
-              </p>
-            </Reveal>
-          ))}
+          {post.body.map((para, i) =>
+            para.startsWith("## ") ? (
+              <Reveal key={i}>
+                <h2 className="font-display text-3xl text-ink pt-6">
+                  {para.slice(3)}
+                </h2>
+              </Reveal>
+            ) : (
+              <Reveal key={i}>
+                <p className="text-lg leading-[1.75] text-[color:var(--ink-soft)]">
+                  {para}
+                </p>
+              </Reveal>
+            ),
+          )}
         </div>
       </section>
       <CtaBand />
